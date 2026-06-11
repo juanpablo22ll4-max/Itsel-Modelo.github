@@ -1,108 +1,398 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Model Portfolio | Premium</title>
 
-  <link rel="stylesheet" href="modelo.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FR Web Studio</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 </head>
 
 <body>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="overlay"></div>
+<!-- PRELOADER -->
 
-  <div class="hero-content">
-    <h1>Itzel Huerta</h1>
-    <p>International Model · Fashion · Editorial · Runway</p>
+<div id="preloader">
+<div class="loader"></div>
+</div>
 
-    <div class="buttons">
-      <a class="btn primary">Portfolio</a>
-      <a class="btn ghost">Contact</a>
-    </div>
-  </div>
+<!-- CURSOR -->
+
+<div class="cursor"></div>
+
+<!-- PARTICLES -->
+
+<div id="particles"></div>
+
+<!-- NAVBAR -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+FR<span>Web Studio</span>
+</div>
+
+<ul class="nav-links">
+
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="#portfolio">Portafolio</a></li>
+<li><a href="#precios">Precios</a></li>
+<li><a href="#contacto">Contacto</a></li>
+
+</ul>
+
+<div class="menu-btn">
+<i class="fas fa-bars"></i>
+</div>
+
+</nav>
+
 </header>
 
-<!-- ABOUT -->
-<section class="about reveal">
-  <h2>Professional Profile</h2>
-  <p>
-    Model with international experience in luxury campaigns, fashion editorials, and runway shows across Europe and America.
-    Has worked with high-end brands and productions.
-  </p>
+<!-- HERO -->
 
-  <div class="stats">
-    <div class="card">🌍 +12 Countries</div>
-    <div class="card">👑 3 Titles</div>
-    <div class="card">📸 +40 Campaigns</div>
-  </div>
-</section>
+<section class="hero" id="inicio">
 
-<!-- GALLERY -->
-<section id="gallery" class="gallery reveal">
-  <h2>Editorial</h2>
+<video autoplay muted loop playsinline>
 
-  <div class="grid">
+<source src="https://cdn.coverr.co/videos/coverr-working-on-a-laptop-5176/1080p.mp4"
+type="video/mp4">
 
-    <img src="Imagenes/imagen-1.jpg" class="img1">
-    <img src="Imagenes/imagen-2.jpg" class="img2">
-    <img src="Imagenes/imagen-3.jpg" class="img3">
-    <img src="Imagenes/imagen-4.jpg" class="img4">
-    <img src="Imagenes/imagen-5.jpg" class="img5">
-    <img src="Imagenes/imagen-6.jpg" class="img6">
+</video>
 
-  </div>
-</section>
+<div class="overlay"></div>
 
-<!-- COLLABS -->
-<section id="collabs" class="collabs reveal">
-  <h2>Collaborations</h2>
+<div class="hero-content">
 
-  <div class="brands">
-    <a href="https://www.vogue.com/fashion" target="_blank">Vogue Style</a>
-    <a href="https://www.nyfashion.com" target="_blank">NY Fashion</a>
-    <a href="https://www.elitemodel.com" target="_blank">Elite Model</a>
-    <a href="https://www.carolinaherrera.com/us/en/" target="_blank">Carolina Herrera</a>
-  </div>
-</section>
+<h1 data-aos="fade-up">
+Crea tu pagina web</h1>
 
-<!-- CONTACT -->
-<section id="contact" class="contact reveal">
+<p data-aos="fade-up" data-aos-delay="200">
+Diseño moderno, rápido y optimizado para convertir visitantes en clientes.
+</p>
 
-  <h2>Booking</h2>
+<div class="hero-buttons">
 
-  <form action="https://formspree.io/f/TU_CODIGO" method="POST">
+<a href="#contacto" class="btn-primary">
+Solicitar Cotización
+</a>
 
-    <input type="text" name="nombre" placeholder="Name">
+<a href="#portfolio" class="btn-secondary">
+Ver Portafolio
+</a>
 
-    <input type="email" name="correo" placeholder="Email">
-
-    <textarea name="mensaje" placeholder="Message"></textarea>
-
-    <button type="submit" class="btn primary full">
-      Send Request
-    </button>
-
-  </form>
-
-</section>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <span class="close">✕</span>
-  <img id="modalImg">
 </div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="stats">
+
+<div class="stat-box">
+<h2 class="counter" data-target="250">0</h2>
+<p>Clientes</p>
+</div>
+
+<div class="stat-box">
+<h2 class="counter" data-target="500">0</h2>
+<p>Proyectos</p>
+</div>
+
+<div class="stat-box">
+<h2 class="counter" data-target="98">0</h2>
+<p>% Satisfacción</p>
+</div>
+
+<div class="stat-box">
+<h2 class="counter" data-target="12">0</h2>
+<p>Años de Experiencia</p>
+</div>
+
+</section>
+
+<!-- SERVICIOS -->
+
+<section class="services" id="servicios">
+
+<h2 data-aos="fade-up">
+Nuestros Servicios
+</h2>
+
+<div class="services-grid">
+
+<div class="service-card" data-aos="zoom-in">
+
+<i class="fas fa-laptop-code"></i>
+
+<h3>Diseño Web</h3>
+
+<p>
+Landing pages, sitios corporativos y tiendas online.
+</p>
+
+</div>
+
+<div class="service-card" data-aos="zoom-in">
+
+<i class="fas fa-mobile-screen-button"></i>
+
+<h3>Responsive</h3>
+
+<p>
+Adaptado perfectamente a celulares y tablets.
+</p>
+
+</div>
+
+<div class="service-card" data-aos="zoom-in">
+
+<i class="fas fa-rocket"></i>
+
+<h3>Optimización</h3>
+
+<p>
+Mayor velocidad y mejor experiencia de usuario.
+</p>
+
+</div>
+
+<div class="service-card" data-aos="zoom-in">
+
+<i class="fas fa-chart-line"></i>
+
+<h3>Marketing</h3>
+
+<p>
+Más alcance y más clientes potenciales.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PORTAFOLIO -->
+
+<section class="portfolio" id="portfolio">
+
+<h2 data-aos="fade-up">
+Proyectos Recientes
+</h2>
+
+<div class="portfolio-slider">
+
+<div class="slide active">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="">
+</div>
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" alt="">
+</div>
+
+<div class="slide">
+<img src="https://images.unsplash.com/photo-1551434678-e076c223a692" alt="">
+</div>
+
+</div>
+
+</section>
+
+<!-- PRECIOS -->
+
+<section class="pricing" id="precios">
+
+<h2>Planes</h2>
+
+<div class="pricing-grid">
+
+<div class="price-card">
+
+<h3>Básico</h3>
+
+<h1>$299</h1>
+
+<ul>
+
+<li>Landing Page</li>
+<li>Diseño Responsive</li>
+<li>Formulario Contacto</li>
+
+</ul>
+
+<a href="#" class="btn-primary">
+Comenzar
+</a>
+
+</div>
+
+<div class="price-card featured">
+
+<h3>Profesional</h3>
+
+<h1>$799</h1>
+
+<ul>
+
+<li>Hasta 10 páginas</li>
+<li>SEO Básico</li>
+<li>Animaciones Premium</li>
+
+</ul>
+
+<a href="#" class="btn-primary">
+Comenzar
+</a>
+
+</div>
+
+
+</section>
+
+<!-- FAQ -->
+
+<section class="faq">
+
+<h2>Preguntas Frecuentes</h2>
+
+<div class="faq-item">
+
+<button class="faq-question">
+¿Cuánto tarda una página web?
+</button>
+
+<div class="faq-answer">
+Entre 5 y 15 días dependiendo del proyecto.
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+¿Incluye dominio?
+</button>
+
+<div class="faq-answer">
+Podemos ayudarte a configurarlo.
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+¿Incluye hosting?
+</button>
+
+<div class="faq-answer">
+Sí, ofrecemos planes de alojamiento.
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACTO -->
+
+<section class="contact" id="contacto">
+
+<h2>Contáctanos</h2>
+
+<form id="contactForm">
+
+<input
+type="text"
+placeholder="Nombre"
+required>
+
+<input
+type="email"
+placeholder="Correo"
+required>
+
+<textarea
+placeholder="Cuéntanos tu proyecto"
+required>
+</textarea>
+
+<button type="submit">
+Enviar Mensaje
+</button>
+
+</form>
+
+</section>
+
+<!-- WHATSAPP -->
+
+<a href="https://wa.me/1234567890"
+class="whatsapp"
+target="_blank">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
 
 <!-- FOOTER -->
 
-<footer id="footer" class="footer">
-  <p>© 2026 All rights reserved</p>
+<footer>
+
+<h3>WEB PRO</h3>
+
+<p>
+Diseño Web Premium para Empresas Modernas
+</p>
+
+<div class="socials">
+
+<a href="#">
+<i class="fab fa-facebook"></i>
+</a>
+
+<a href="#">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="#">
+<i class="fab fa-linkedin"></i>
+</a>
+
+<a href="#">
+<i class="fab fa-youtube"></i>
+</a>
+
+</div>
+
+<p>
+© 2026 Todos los derechos reservados.
+</p>
+
 </footer>
 
-<script src="modelo.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script src="script.js"></script>
 
 </body>
 </html>
