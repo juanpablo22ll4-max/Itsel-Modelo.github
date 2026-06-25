@@ -1,396 +1,207 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FR Web Studio</title>
-
+<title>Pasteles Andinos Premium</title>
+<link rel="icon" href="IMG/IMG_1182.PNG" type="image/png">
 <link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
 </head>
 
 <body>
 
-<!-- PRELOADER -->
+<header class="hero">
 
-<div id="preloader">
-<div class="loader"></div>
-</div>
+    <div class="overlay"></div>
 
-<!-- CURSOR -->
 
-<div class="cursor"></div>
+    <div class="hero-content">
+        <h1>Pasteles Andinos Premium</h1>
 
-<!-- PARTICLES -->
+        <p>
+            Pasteles recién hechos, sabor tradicional andino,
+            ingredientes frescos y calidad artesanal.
+        </p>
 
-<div id="particles"></div>
-
-<!-- NAVBAR -->
-
-<header>
-
-<nav class="navbar">
-
-<div class="logo">
-FR<span>Web Studio</span>
-</div>
-
-<ul class="nav-links">
-
-<li><a href="#inicio">Inicio</a></li>
-<li><a href="#servicios">Servicios</a></li>
-<li><a href="#portfolio">Portafolio</a></li>
-<li><a href="#precios">Precios</a></li>
-<li><a href="#contacto">Contacto</a></li>
-
-</ul>
-
-<div class="menu-btn">
-<i class="fas fa-bars"></i>
-</div>
-
-</nav>
+        <button onclick="scrollToMenu()">
+            Ver Menú
+        </button>
+    </div>
 
 </header>
 
-<!-- HERO -->
+<section class="pickup">
+    <h2>📍 Solo Pick Up</h2>
+    <p>
+        Realiza tu pedido y recógelo en el horario acordado.
+    </p>
 
-<section class="hero" id="inicio">
-
-<video autoplay muted loop playsinline>
-
-<source src="https://cdn.coverr.co/videos/coverr-working-on-a-laptop-5176/1080p.mp4"
-type="video/mp4">
-
-</video>
-
-<div class="overlay"></div>
-
-<div class="hero-content">
-
-<h1 data-aos="fade-up">
-Crea tu pagina web</h1>
-
-<p data-aos="fade-up" data-aos-delay="200">
-Diseño moderno, rápido y optimizado para convertir visitantes en clientes.
-</p>
-
-<div class="hero-buttons">
-
-<a href="#contacto" class="btn-primary">
-Solicitar Cotización
+    <a class="maps-btn" href="https://www.google.com/maps/place/589+Redwood+Rd,+Bolingbrook,+IL+60440/@41.7028066,-88.0421438,17z/data=!3m1!4b1!4m6!3m5!1s0x880e5b1d13059dc3:0x276e532f136c30ff!8m2!3d41.7028066!4d-88.0395689!16s%2Fg%2F11csp06mk9?entry=ttu&g_ep=EgoyMDI2MDYyMS4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+   Cómo llegar
 </a>
-
-<a href="#portfolio" class="btn-secondary">
-Ver Portafolio
-</a>
-
-</div>
-
-</div>
-
 </section>
 
-<!-- STATS -->
 
-<section class="stats">
+<section id="menu" class="menu">
 
-<div class="stat-box">
-<h2 class="counter" data-target="250">0</h2>
-<p>Clientes</p>
-</div>
+    <h2>Nuestro Menú</h2>
 
-<div class="stat-box">
-<h2 class="counter" data-target="500">0</h2>
-<p>Proyectos</p>
-</div>
+    <div class="products">
 
-<div class="stat-box">
-<h2 class="counter" data-target="98">0</h2>
-<p>% Satisfacción</p>
-</div>
-
-<div class="stat-box">
-<h2 class="counter" data-target="12">0</h2>
-<p>Años de Experiencia</p>
-</div>
-
-</section>
-
-<!-- SERVICIOS -->
-
-<section class="services" id="servicios">
-
-<h2 data-aos="fade-up">
-Nuestros Servicios
-</h2>
-
-<div class="services-grid">
-
-<div class="service-card" data-aos="zoom-in">
-
-<i class="fas fa-laptop-code"></i>
-
-<h3>Diseño Web</h3>
-
-<p>
-Landing pages, sitios corporativos y tiendas online.
-</p>
-
-</div>
-
-<div class="service-card" data-aos="zoom-in">
-
-<i class="fas fa-mobile-screen-button"></i>
-
-<h3>Responsive</h3>
-
-<p>
-Adaptado perfectamente a celulares y tablets.
-</p>
-
-</div>
-
-<div class="service-card" data-aos="zoom-in">
-
-<i class="fas fa-rocket"></i>
-
-<h3>Optimización</h3>
-
-<p>
-Mayor velocidad y mejor experiencia de usuario.
-</p>
-
-</div>
-
-<div class="service-card" data-aos="zoom-in">
-
-<i class="fas fa-chart-line"></i>
-
-<h3>Marketing</h3>
-
-<p>
-Más alcance y más clientes potenciales.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- PORTAFOLIO -->
-
-<section class="portfolio" id="portfolio">
-
-<h2 data-aos="fade-up">
-Proyectos Recientes
-</h2>
-
-<div class="portfolio-slider">
-
-<div class="slide active">
-<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="">
-</div>
-
-<div class="slide">
-<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" alt="">
-</div>
-
-<div class="slide">
-<img src="https://images.unsplash.com/photo-1551434678-e076c223a692" alt="">
-</div>
-
-</div>
-
-</section>
-
-<!-- PRECIOS -->
-
-<section class="pricing" id="precios">
-
-<h2>Planes</h2>
-
-<div class="pricing-grid">
-
-<div class="price-card">
-
-<h3>Básico</h3>
-
-<h1>$299</h1>
-
-<ul>
-
-<li>Landing Page</li>
-<li>Diseño Responsive</li>
-<li>Formulario Contacto</li>
-
-</ul>
-
-<a href="#" class="btn-primary">
-Comenzar
-</a>
-
-</div>
-
-<div class="price-card featured">
-
-<h3>Profesional</h3>
-
-<h1>$799</h1>
-
-<ul>
-
-<li>Hasta 10 páginas</li>
-<li>SEO Básico</li>
-<li>Animaciones Premium</li>
-
-</ul>
-
-<a href="#" class="btn-primary">
-Comenzar
-</a>
-
-</div>
-
-
-</section>
-
-<!-- FAQ -->
-
-<section class="faq">
-
-<h2>Preguntas Frecuentes</h2>
-
-<div class="faq-item">
-
-<button class="faq-question">
-¿Cuánto tarda una página web?
+        <div class="product">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMtzIogyCoKIWHohACPRYmb-0Uk9FA6RLAlJSCLCR1GRYapv_smAw3dmpZ&s=10">
+            <h3>Pastel de Carne</h3>
+            <p>Carne molida, sazonada al estilo Andino.</p>
+            <span>$3.00</span>
+            <button onclick="addToCart('Pastel de carne',3,00)">Agregar
 </button>
+        </div>
 
-<div class="faq-answer">
-Entre 5 y 15 días dependiendo del proyecto.
-</div>
+         <div class="product">
+        <img src="cake1.jpg" alt="">
+        <h3>Pastel de Jamnon y Queso</h3>
+                    <p>Queso Venezolanos con Jamon Fresco</p>
 
-</div>
+        <p>$3.00</p>
+        <button onclick="addToCart('Pastel de Chocolate',3,00)">
+            Agregar
+        </button>
+    </div>
 
-<div class="faq-item">
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591">
+            <h3>Pastel de Pizza</h3>
+            <p>Queso Mozzarella, Tocineta, Mais y Salsa.</p>
+            <span>$3.00</span>
+              <button onclick="addToCart('Pastel de pizza',3,00)">
+            Agregar
+        </button>
+        </div>
 
-<button class="faq-question">
-¿Incluye dominio?
-</button>
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947">
+            <h3>Pastel de Pollo</h3>
+            <p>Pollo Desmechado.</p>
+            <span>$3.00</span>
+              <button onclick="addToCart('Pastel de Pollo',3,00)">
+            Agregar
+        </button>
+        </div>
 
-<div class="faq-answer">
-Podemos ayudarte a configurarlo.
-</div>
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1559847844-5315695dadae">
+            <h3>Pastel de Queso</h3>
+            <p>Queso fresco.</p>
+            <span>$3.00</span>
+              <button onclick="addToCart('Pastel de Queso',3,00)">
+            Agregar
+        </button>
+        </div>
 
-</div>
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38">
+            <h3>Pastel Guayaba con Queso</h3>
+            <p>Queso Fresco y Bocadillo de Guayaba</p>
+            <span>$3.00</span>
+              <button onclick="addToCart('Pastel de Mixto',3,00)">
+            Agregar
+        </button>
+        </div>
 
-<div class="faq-item">
-
-<button class="faq-question">
-¿Incluye hosting?
-</button>
-
-<div class="faq-answer">
-Sí, ofrecemos planes de alojamiento.
-</div>
-
-</div>
-
-</section>
-
-<!-- CONTACTO -->
-
-<section class="contact" id="contacto">
-
-<h2>Contáctanos</h2>
-
-<form id="contactForm">
-
-<input
-type="text"
-placeholder="Nombre"
-required>
-
-<input
-type="email"
-placeholder="Correo"
-required>
-
-<textarea
-placeholder="Cuéntanos tu proyecto"
-required>
-</textarea>
-
-<button type="submit">
-Enviar Mensaje
-</button>
-
-</form>
+    </div>
 
 </section>
 
-<!-- WHATSAPP -->
+<section class="combos">
 
-<a href="https://wa.me/1234567890"
-class="whatsapp"
-target="_blank">
+    <h2>Combos Especiales</h2>
 
-<i class="fab fa-whatsapp"></i>
+    <div class="combo-grid">
 
-</a>
+        <div class="combo">
+                        <img src="https://comidasvenezolanas.org/assets/images/pastelitos-andinos_800x534.webp">
 
-<!-- FOOTER -->
+            <h3>Combo Familiar</h3>
+            <p>Pasteles surtidos + Agua Panela con Limón</p>
+            <span>$30</span>
+                          <button onclick="addToCart('Combo Familiar',35)">Agregar</button>
+
+        </div>
+
+        <div class="combo">
+                                    <img src="https://comidasvenezolanas.org/assets/images/pastelitos-andinos_800x534.webp">
+
+            <h3>Combo Reunión</h3>
+            <p>Ideal para compartir.</p>
+            <span>$55</span>
+                          <button onclick="addToCart('Combo Reunion',35)">Agregar</button>
+
+        </div>
+
+        <div class="combo">
+                                    <img src="https://comidasvenezolanas.org/assets/images/pastelitos-andinos_800x534.webp">
+
+            <h3>Combo Fiesta</h3>
+            <p>Perfecto para celebraciones.</p>
+            <span>$95</span>
+                          <button onclick="addToCart('Combo Fiesta',35)">Agregar</button>
+
+        </div>
+
+        <div class="combo">
+            <h3>Combo Extra</h3>
+            <p>Complementos y adicionales.</p>
+            <span>Consultar</span>
+                          <button onclick="addToCart('Combo',35)">Agregar</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- CARRITO ABAJO -->
+<section class="cart">
+
+  <h2>Tu Pedido</h2>
+
+  <ul id="cartItems"></ul>
+
+  <h3>Total: $<span id="total">0.00</span></h3>
+
+  <button onclick="sendWhatsApp()">
+    Pedir por WhatsApp
+  </button>
+
+</section>
+
 
 <footer>
 
-<h3>WEB PRO</h3>
+    <h3>Pasteles Andinos Premium</h3>
 
-<p>
-Diseño Web Premium para Empresas Modernas
-</p>
+    <p>
+        Tradición, sabor y calidad artesanal.
+    </p>
 
-<div class="socials">
+    <div class="socials">
 
-<a href="#">
-<i class="fab fa-facebook"></i>
-</a>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">TikTok</a>
 
-<a href="#">
-<i class="fab fa-instagram"></i>
-</a>
+    </div>
 
-<a href="#">
-<i class="fab fa-linkedin"></i>
-</a>
-
-<a href="#">
-<i class="fab fa-youtube"></i>
-</a>
-
-</div>
-
-<p>
-© 2026 Todos los derechos reservados.
-</p>
+    <p class="copy">
+        © 2026 Pasteles Andinos Premium
+    </p>
 
 </footer>
 
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<div id="toast">Agregado ✔</div>
 
 <script src="script.js"></script>
 

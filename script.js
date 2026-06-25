@@ -1,538 +1,161 @@
-/* ==================================
-PRELOADER
-================================== */
+let cart = [];
 
-window.addEventListener("load", () => {
-
-document.body.classList.add("loaded");
-
-setTimeout(() => {
-
-const preloader =
-document.getElementById("preloader");
-
-if(preloader){
-preloader.style.display = "none";
+/* =========================
+   SCROLL AL MENÚ
+========================= */
+function scrollToMenu() {
+    document.getElementById("menu").scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
-},1000);
-
+/* =========================
+   ANIMACIONES SCROLL
+========================= */
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, {
+    threshold: 0.15
 });
 
-/* ==================================
-AOS
-================================== */
-
-AOS.init({
-
-duration:1200,
-
-once:true,
-
-offset:100
-
+document.querySelectorAll(
+    ".card, .combo, .drink-card, .pickup, .cta"
+).forEach(item => {
+    item.classList.add("hidden");
+    observer.observe(item);
 });
 
-/* ==================================
-MENU HAMBURGUESA
-================================== */
+/* =========================
+   WHATSAPP EFFECT
+========================= */
+const whatsappBtn = document.querySelector(".whatsapp-btn");
 
-const menuBtn =
-document.querySelector(".menu-btn");
+if (whatsappBtn) {
+    whatsappBtn.addEventListener("mouseenter", () => {
+        whatsappBtn.style.transform = "scale(1.08)";
+    });
 
-const navLinks =
-document.querySelector(".nav-links");
-
-if(menuBtn){
-
-menuBtn.addEventListener("click",()=>{
-
-navLinks.classList.toggle("active");
-
-});
-
+    whatsappBtn.addEventListener("mouseleave", () => {
+        whatsappBtn.style.transform = "scale(1)";
+    });
 }
 
-/* ==================================
-CERRAR MENU AL HACER CLICK
-================================== */
+/* =========================
+   AGREGAR AL CARRITO (CORRECTO)
+========================= */
+function addToCart(name, price){
 
-document
-.querySelectorAll(".nav-links a")
-.forEach(link=>{
+    let item = cart.find(i => i.name === name);
 
-link.addEventListener("click",()=>{
+    if(item){
+        item.qty++;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            qty: 1
+        });
+    }
 
-navLinks.classList.remove("active");
-
-});
-
-});
-
-/* ==================================
-NAVBAR SCROLL
-================================== */
-
-const navbar =
-document.querySelector(".navbar");
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY > 80){
-
-navbar.style.padding =
-"15px 8%";
-
-navbar.style.background =
-"rgba(0,0,0,.6)";
-
-}else{
-
-navbar.style.padding =
-"25px 8%";
-
-navbar.style.background =
-"rgba(0,0,0,.15)";
-
+    updateCart();
+    showToast("Agregado ✔");
 }
 
-});
+/* =========================
+   ACTUALIZAR CARRITO
+========================= */
+function updateCart(){
 
-/* ==================================
-CONTADORES
-================================== */
+    const list = document.getElementById("cartItems");
+    const totalEl = document.getElementById("total");
 
-const counters =
-document.querySelectorAll(".counter");
+    list.innerHTML = "";
 
-const startCounters = ()=>{
+    let total = 0;
 
-counters.forEach(counter=>{
+    cart.forEach((item, index) => {
 
-const target =
-+counter.dataset.target;
+        total += item.price * item.qty;
 
-const updateCounter = ()=>{
+        list.innerHTML += `
+            <li>
+                ${item.name} x${item.qty} - $${(item.price * item.qty).toFixed(2)}
 
-const current =
-+counter.innerText;
+                <button onclick="removeOne(${index})">−</button>
+                <button onclick="addOne(${index})">+</button>
+                <button onclick="removeItem(${index})">❌</button>
+            </li>
+        `;
+    });
 
-const increment =
-target / 120;
-
-if(current < target){
-
-counter.innerText =
-Math.ceil(current + increment);
-
-setTimeout(
-updateCounter,
-20
-);
-
-}else{
-
-counter.innerText =
-target;
-
+    totalEl.textContent = total.toFixed(2);
 }
 
-};
-
-updateCounter();
-
-});
-
-};
-
-let counterStarted = false;
-
-window.addEventListener("scroll",()=>{
-
-const stats =
-document.querySelector(".stats");
-
-if(!stats) return;
-
-const top =
-stats.getBoundingClientRect().top;
-
-if(top < window.innerHeight &&
-!counterStarted){
-
-counterStarted = true;
-
-startCounters();
-
+/* =========================
+   + Y -
+========================= */
+function addOne(index){
+    cart[index].qty++;
+    updateCart();
 }
 
-});
+function removeOne(index){
+    cart[index].qty--;
 
-/* ==================================
-PORTFOLIO SLIDER
-================================== */
+    if(cart[index].qty <= 0){
+        cart.splice(index, 1);
+    }
 
-const slides =
-document.querySelectorAll(".slide");
-
-let currentSlide = 0;
-
-function nextSlide(){
-
-if(slides.length === 0) return;
-
-slides[currentSlide]
-.classList.remove("active");
-
-currentSlide++;
-
-if(currentSlide >= slides.length){
-
-currentSlide = 0;
-
+    updateCart();
 }
 
-slides[currentSlide]
-.classList.add("active");
-
+/* =========================
+   ELIMINAR COMPLETO
+========================= */
+function removeItem(index){
+    cart.splice(index, 1);
+    updateCart();
+    showToast("Eliminado ❌");
 }
 
-setInterval(nextSlide,5000);
+/* =========================
+   WHATSAPP
+========================= */
+function sendWhatsApp(){
 
-/* ==================================
-TESTIMONIALS
-================================== */
+    let number = "16308194415";
 
-const testimonials =
-document.querySelectorAll(".testimonial");
+    let message = "Hola, quiero pedir:%0A%0A";
 
-let testimonialIndex = 0;
+    cart.forEach(item => {
+        message += `• ${item.name} x${item.qty} - $${(item.price * item.qty).toFixed(2)}%0A`;
+    });
 
-function nextTestimonial(){
+    let total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
 
-if(testimonials.length === 0) return;
+    message += `%0ATotal: $${total.toFixed(2)}`;
 
-testimonials[testimonialIndex]
-.classList.remove("active");
-
-testimonialIndex++;
-
-if(
-testimonialIndex >= testimonials.length
-){
-
-testimonialIndex = 0;
-
+    window.open(
+        `https://wa.me/${number}?text=${message}`,
+        "_blank"
+    );
 }
 
-testimonials[testimonialIndex]
-.classList.add("active");
+/* =========================
+   TOAST
+========================= */
+function showToast(text){
 
+    const toast = document.getElementById("toast");
+
+    toast.textContent = text;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 1500);
 }
-
-setInterval(nextTestimonial,4000);
-
-/* ==================================
-FAQ
-================================== */
-
-const faqItems =
-document.querySelectorAll(".faq-item");
-
-faqItems.forEach(item=>{
-
-const question =
-item.querySelector(".faq-question");
-
-question.addEventListener("click",()=>{
-
-item.classList.toggle("active");
-
-});
-
-});
-
-/* ==================================
-CURSOR PERSONALIZADO
-================================== */
-
-const cursor =
-document.querySelector(".cursor");
-
-document.addEventListener("mousemove",(e)=>{
-
-if(!cursor) return;
-
-cursor.style.left =
-e.clientX + "px";
-
-cursor.style.top =
-e.clientY + "px";
-
-});
-
-document
-.querySelectorAll("a, button")
-.forEach(el=>{
-
-el.addEventListener("mouseenter",()=>{
-
-if(cursor){
-
-cursor.style.width = "40px";
-cursor.style.height = "40px";
-
-}
-
-});
-
-el.addEventListener("mouseleave",()=>{
-
-if(cursor){
-
-cursor.style.width = "20px";
-cursor.style.height = "20px";
-
-}
-
-});
-
-});
-
-/* ==================================
-PARTICULAS
-================================== */
-
-const particlesContainer =
-document.getElementById("particles");
-
-if(particlesContainer){
-
-for(let i=0;i<60;i++){
-
-const particle =
-document.createElement("div");
-
-particle.classList.add("particle");
-
-const size =
-Math.random()*6 + 2;
-
-particle.style.width =
-size + "px";
-
-particle.style.height =
-size + "px";
-
-particle.style.left =
-Math.random()*100 + "%";
-
-particle.style.animationDuration =
-Math.random()*15 + 8 + "s";
-
-particle.style.animationDelay =
-Math.random()*5 + "s";
-
-particlesContainer
-.appendChild(particle);
-
-}
-
-}
-
-/* ==================================
-DARK MODE AUTOMATICO
-================================== */
-
-if(
-window.matchMedia(
-"(prefers-color-scheme: dark)"
-).matches
-){
-
-document.body.classList.add("dark");
-
-}
-
-/* ==================================
-FORMULARIO WHATSAPP
-================================== */
-
-const contactForm =
-document.getElementById("contactForm");
-
-if(contactForm){
-
-contactForm.addEventListener(
-"submit",
-function(e){
-
-e.preventDefault();
-
-const nombre =
-this.querySelector(
-'input[type="text"]'
-).value;
-
-const correo =
-this.querySelector(
-'input[type="email"]'
-).value;
-
-const mensaje =
-this.querySelector(
-'textarea'
-).value;
-
-const texto =
-
-`Hola, mi nombre es ${nombre}%0A%0A` +
-
-`Correo: ${correo}%0A%0A` +
-
-`Mensaje:%0A${mensaje}`;
-
-window.open(
-
-`https://wa.me/1234567890?text=${texto}`,
-
-"_blank"
-
-);
-
-});
-
-}
-
-/* ==================================
-REVEAL ON SCROLL
-================================== */
-
-const reveals =
-document.querySelectorAll(".fade-up");
-
-function revealElements(){
-
-reveals.forEach(element=>{
-
-const top =
-element.getBoundingClientRect().top;
-
-if(top < window.innerHeight - 100){
-
-element.classList.add("show");
-
-}
-
-});
-
-}
-
-window.addEventListener(
-"scroll",
-revealElements
-);
-
-revealElements();
-
-/* ==================================
-SCROLL TO TOP
-================================== */
-
-const scrollButton =
-document.createElement("div");
-
-scrollButton.innerHTML =
-'<i class="fas fa-chevron-up"></i>';
-
-scrollButton.classList.add(
-"scroll-top"
-);
-
-document.body.appendChild(
-scrollButton
-);
-
-scrollButton.style.position =
-"fixed";
-
-scrollButton.style.bottom =
-"100px";
-
-scrollButton.style.right =
-"25px";
-
-scrollButton.style.width =
-"50px";
-
-scrollButton.style.height =
-"50px";
-
-scrollButton.style.display =
-"flex";
-
-scrollButton.style.alignItems =
-"center";
-
-scrollButton.style.justifyContent =
-"center";
-
-scrollButton.style.borderRadius =
-"50%";
-
-scrollButton.style.background =
-"#00e5ff";
-
-scrollButton.style.color =
-"#000";
-
-scrollButton.style.cursor =
-"pointer";
-
-scrollButton.style.opacity =
-"0";
-
-scrollButton.style.transition =
-".3s";
-
-scrollButton.style.zIndex =
-"999";
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY > 400){
-
-scrollButton.style.opacity =
-"1";
-
-}else{
-
-scrollButton.style.opacity =
-"0";
-
-}
-
-});
-
-scrollButton.addEventListener(
-"click",
-()=>{
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-}
-);
-
-/* ==================================
-FIN
-================================== */
-
-console.log(
-"WEB PRO PREMIUM CARGADO"
-);
